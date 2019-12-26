@@ -4,7 +4,7 @@ import { TabsPage } from './tabs.page';
 
 const routes: Routes = [
   {
-    path: 'tabs',
+    path: 'pages',
     component: TabsPage,
     children: [
       {
@@ -38,15 +38,46 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'unidades-robotica',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../unidades-robotica/unidades-robotica.module').then(m => m.UnidadesRoboticaPageModule)
+          }
+        ]
+      },
+      {
+        path: 'unidades-electricidad',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../unidades-electricidad/unidades-electricidad.module').then(m => m.UnidadesElectricidadPageModule)
+          }
+        ]
+      },
+      {
+        path: 'temas-unidad-uno-el',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../unidades-electricidad/temas-unidad-uno-el/temas-unidad-uno-el.module').then(m => m.TemasUnidadUnoElPageModule)
+          }
+        ]
+      } 
+      ,
+      {
         path: '',
-        redirectTo: '/tabs/modulos',
+        redirectTo: '/pages/modulos',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/modulos',
+    redirectTo: '/pages/modulos',
     pathMatch: 'full'
   }
 ];
